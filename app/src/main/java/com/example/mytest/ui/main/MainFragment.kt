@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.example.mytest.R
 import com.example.mytest.databinding.MainFragmentBinding
 import com.example.mytest.model.AppState
@@ -23,10 +24,8 @@ class MainFragment : Fragment() {
     private val onClickListener: MainAdapter.OnClickListener =
         object : MainAdapter.OnClickListener {
             override fun onClick(data: FuturamaResultData) {
-                requireActivity().supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_container, DetailsFragment.newInstance(data))
-                    .addToBackStack(null)
-                    .commitAllowingStateLoss()
+                Navigation.findNavController(requireView())
+                    .navigate(R.id.goToDetailsFragment, DetailsFragment.newInstance(data).arguments)
             }
         }
 
@@ -40,16 +39,23 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initAdapter()
+
+        initViewModel()
+    }
+
+    private fun initAdapter() {
         adapter = MainAdapter(onClickListener)
         vb?.futuramaList?.adapter = adapter
+    }
 
-//        TODO("сделать инициализацию через коин и все лишнее вынести в отдельный метод")
-        viewModel.subscribe().observe(viewLifecycleOwner) { rendetData(it) }
+    private fun initViewModel() {
+        viewModel.subscribe().observe(viewLifecycleOwner) { renderData(it) }
         viewModel.getData()
     }
 
 
-    private fun rendetData(state: AppState) {
+    private fun renderData(state: AppState) {
         when (state) {
             is AppState.Success -> {
                 showViewWorking()

@@ -3,13 +3,13 @@ package com.example.mytest.di
 import androidx.room.Room
 import com.example.mytest.model.data.FuturamaResultData
 import com.example.mytest.repositiry.RetrofitBuilder
-import com.example.mytest.repositiry.datasourse.local.DataSoursLocalImplimentation
+import com.example.mytest.repositiry.datasourse.local.DataSoursLocalImplementation
 import com.example.mytest.repositiry.datasourse.local.RoomDataBaseImplementation
+import com.example.mytest.repositiry.datasourse.remote.DataSoursRemoteImplementation
 import com.example.mytest.repositiry.interactor.MainInteractor
 import com.example.mytest.repositiry.interactor.OnlineIdentificatorImp
 import com.example.mytest.repositiry.repository.MainRepository
-import com.example.mytest.repositiry.repository.*
-import com.example.mytest.repositiry.datasourse.remote.DataSoursImplimentation
+import com.example.mytest.repositiry.repository.RepositoryMainImplementation
 import com.example.mytest.repositiry.room.HistoryDataBase
 import com.example.mytest.ui.main.MainViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -21,10 +21,8 @@ val application = module {
             .fallbackToDestructiveMigration()
             .build()
     }
-
     single { get<HistoryDataBase>().historyDao() }
 }
-
 
 val mainScreen = module {
 
@@ -35,9 +33,8 @@ val mainScreen = module {
 
     factory<MainRepository<FuturamaResultData>> {
         RepositoryMainImplementation(
-            DataSoursImplimentation(RetrofitBuilder()),
-            DataSoursLocalImplimentation(RoomDataBaseImplementation(get()))
+            DataSoursRemoteImplementation(RetrofitBuilder()),
+            DataSoursLocalImplementation(RoomDataBaseImplementation(get()))
         )
     }
-
 }

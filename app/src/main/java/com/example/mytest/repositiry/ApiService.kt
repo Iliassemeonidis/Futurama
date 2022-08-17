@@ -5,6 +5,7 @@ import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 
 interface ApiService {
+
     @GET("quotes")
     fun getFuturamaDataAsync(): Deferred<List<FuturamaResultData>>
 }

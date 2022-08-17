@@ -4,10 +4,11 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mytest.model.data.FuturamaResultData
 import com.example.mytest.databinding.ItemViewBinding
+import com.example.mytest.model.data.FuturamaResultData
 
-class MainAdapter(private val onClickListener: OnClickListener) : RecyclerView.Adapter<MainAdapter.FuturamaViewHolder>() {
+class MainAdapter(private val onClickListener: OnClickListener) :
+    RecyclerView.Adapter<MainAdapter.FuturamaViewHolder>() {
 
     private var listOfFuturama: List<FuturamaResultData> = listOf()
 
@@ -38,6 +39,7 @@ class MainAdapter(private val onClickListener: OnClickListener) : RecyclerView.A
             }
         }
     }
+
     interface OnClickListener {
         fun onClick(data: FuturamaResultData)
     }

@@ -30,27 +30,6 @@ class DetailsFragment : Fragment() {
         vb?.image?.load(data.image)
         vb?.statements?.text = data.quote
 
-
-        // TODO делать проверку на офлайн и онлайн
-//        if (онлайн) {
-//            showViewWorking()
-//            vb?.image?.load(data.image)
-//            vb?.statements?.text = data.quote
-//        } else {
-//            showViewLoading()
-//            binding.progressBarHorizontal.visibility = View.VISIBLE
-//            binding.progressBarRound.visibility = View.GONE
-//            binding.progressBarHorizontal.progress =5
-//        }
-    }
-
-    // TODO вынести в утелиты
-    private fun showViewWorking() {
-        vb?.loadingFrameLayout?.visibility = View.GONE
-    }
-
-    private fun showViewLoading() {
-        vb?.loadingFrameLayout?.visibility = View.VISIBLE
     }
 
     companion object {

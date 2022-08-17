@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitBuilder {
 
-    suspend fun getData():List <FuturamaResultData> {
+    suspend fun getData(): List<FuturamaResultData> {
         return getService().getFuturamaDataAsync().await()
     }
 
@@ -44,5 +44,4 @@ class RetrofitBuilder {
     companion object {
         private const val BASE_URL = "https://futuramaapi.herokuapp.com/api/"
     }
-
 }

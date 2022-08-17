@@ -15,7 +15,7 @@ class RoomDataBaseImplementation(private val historyDao: HistoryDao) : DataSours
                     historyDao.insert(HistoryEntity(0,it.character,it.quote,it.image))
                 }
             }
-            else ->{}
+            else -> {}
         }
     }
 
@@ -27,5 +27,4 @@ class RoomDataBaseImplementation(private val historyDao: HistoryDao) : DataSours
         }
         return list
     }
-
 }

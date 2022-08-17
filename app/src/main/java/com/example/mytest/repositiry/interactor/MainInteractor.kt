@@ -24,7 +24,7 @@ class MainInteractor(
         return if (repository.getFromDb().isNotEmpty()) {
             AppState.Success(repository.getFromDb())
         } else {
-              AppState.Information("Отсутствуют данные в базе, необходимо кодключение к интернету")
+            AppState.Information("Отсутствуют данные в базе, необходимо кодключение к интернету")
         }
     }
 

@@ -12,7 +12,7 @@ class AppFuturama : Application() {
         super.onCreate()
         startKoin {
             androidContext(applicationContext)
-            modules(application,mainScreen)
+            modules(application, mainScreen)
         }
     }
 }

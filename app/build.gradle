@@ -93,10 +93,15 @@ dependencies {
     implementation 'androidx.room:room-ktx:2.4.3'
 
     //Koin
-     def koinVersion = "3.1.2"
+    def koinVersion = "3.1.2"
     implementation "io.insert-koin:koin-core:${koinVersion}"
     implementation "io.insert-koin:koin-android:${koinVersion}"
     implementation "io.insert-koin:koin-android-compat:${koinVersion}"
+
+    // Navigation
+    def nav_version = "2.5.1"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
 
 }

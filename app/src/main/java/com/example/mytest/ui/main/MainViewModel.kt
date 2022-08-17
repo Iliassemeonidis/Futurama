@@ -13,7 +13,7 @@ class MainViewModel(private val interactor: MainInteractor) : ViewModel() {
 
     private val _mutableLiveData: MutableLiveData<AppState> = MutableLiveData()
 
-    private val liveData : LiveData<AppState> = _mutableLiveData
+    private val liveData: LiveData<AppState> = _mutableLiveData
 
     fun subscribe(): LiveData<AppState> = liveData
 
